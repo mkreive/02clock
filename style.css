@@ -44,7 +44,12 @@ body {
     padding-right: 20px;
 }
 
-.date-weekday {
+.date-monthday {
+    display: flex;
+    flex-direction: row;
+}
+
+#weekday {
     border-left: 4px solid #e36e50;
     padding-left: 20px;
 }
