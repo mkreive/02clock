@@ -1,0 +1,42 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    /* 1rem=10px; 10px/16px default size=62.5% */
+}
+
+body {
+    font-family: "Dosis", sans-serif;
+    font-weight: 400;
+    background-image: linear-gradient(to bottom, #2d2e31, #1e1e21);
+    min-height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    height: 400px;
+    color: #dfe6e9;
+    margin: 7% auto;
+    text-align: center;
+    border: none;
+}
+
+.date {
+    font-size: 800%;
+    color: #e36e50;
+    display: flex;
+    flex-direction: row;
+}
+
+.time {
+    color: #4babe8;
+}
