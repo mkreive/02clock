@@ -37,13 +37,14 @@ const showTime = function () {
     minutesElement.innerText = twoDigitFormatter(minutes);
     secondsElement.innerText = twoDigitFormatter(seconds);
 
-    setInterval(showTime, 1000);
+    // setTimeout(showTime, 1000);
 };
 showTime();
+setInterval(showTime, 1000);
 
 async function getJoke() {
     try {
-        const jokeData = await fetch("https://icanhazdadjoke.com", {
+        const jokeData = await fetch("https://icanhazdadjoke.com/", {
             headers: {
                 Accept: "application/json",
             },
