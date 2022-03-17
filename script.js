@@ -9,7 +9,7 @@ const weekdayElement = document.getElementById("weekday");
 const hoursElement = document.getElementById("hours");
 const minutesElement = document.getElementById("minutes");
 const secondsElement = document.getElementById("seconds");
-const place = document.getElementById("place");
+const jokeElement = document.getElementById("joke");
 
 const twoDigitFormatter = function (field) {
     return field.toLocaleString("en-US", {
@@ -39,37 +39,20 @@ const showTime = function () {
 
     setInterval(showTime, 1000);
 };
-
 showTime();
 
-function showPosition(position) {
-    const { latitude } = position.coords;
-    const { longitude } = position.coords;
-    place.innerText = `Longitude: ${longitude}, Latitude: ${latitude}`;
-}
-
-function showError(error) {
-    switch (error.code) {
-        case error.PERMISSION_DENIED:
-            place.innerText = "User denied the request for Geolocation.";
-            break;
-        case error.POSITION_UNAVAILABLE:
-            place.innerText = "Location information is unavailable.";
-            break;
-        case error.TIMEOUT:
-            place.innerText = "The request to get user location timed out.";
-            break;
-        case error.UNKNOWN_ERROR:
-            place.innerText = "An unknown error occurred.";
-            break;
+async function getJoke() {
+    try {
+        const jokeData = await fetch("https://icanhazdadjoke.com", {
+            headers: {
+                Accept: "application/json",
+            },
+        });
+        const jokeObj = await jokeData.json();
+        jokeElement.innerText = jokeObj.joke;
+    } catch (err) {
+        console.err(`Error: ${err}`);
     }
 }
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition, showError);
-    } else {
-        place.innerText = "Geolocation is not supported by this browser.";
-    }
-}
-getLocation();
+getJoke();
